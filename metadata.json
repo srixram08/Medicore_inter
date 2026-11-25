@@ -1,0 +1,6 @@
+{
+  "name": "MediCore 3D",
+  "description": "Futuristic hospital operations, clinical workflow, and financial analytics platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

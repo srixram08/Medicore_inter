@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-canvas: #F4F8FF;
+  --color-surface: #FFFFFF;
+  --color-border-subtle: #DCE8F7;
+  --color-blue-bright: #0070F3;
+  --color-sky-bright: #0EA5E9;
+  --color-text-primary: #05080F;
+  --color-text-muted: #334155;
+  --color-success: #0D9F6E;
+  --color-warning: #D97706;
+  --color-danger: #E11D48;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #F4F8FF;
+    color: #05080F;
+    color-scheme: light;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom subtle light scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F8FF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C5D9F1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94B8E4;
+}
+
+/* Form shake animation for invalid credentials */
+@keyframes form-shake {
+  0%, 100% { transform: translateX(0); }
+  18% { transform: translateX(-8px); }
+  36% { transform: translateX(7px); }
+  54% { transform: translateX(-5px); }
+  72% { transform: translateX(4px); }
+  90% { transform: translateX(-2px); }
+}
+
+.animate-shake {
+  animation: form-shake 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* ECG SVG fallback wave animation */
+@keyframes ecg-dash {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-ecg-dash {
+  stroke-dasharray: 600;
+  animation: ecg-dash 3.2s linear infinite;
+}
+
+/* Ambient robotics orbital & telemetry animations */
+@keyframes orbit-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes float-drift {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-orbit-slow {
+  transform-origin: center;
+  animation: orbit-slow 36s linear infinite;
+}
+
+.animate-orbit-reverse {
+  transform-origin: center;
+  animation: orbit-reverse 26s linear infinite;
+}
+
+.animate-float-drift {
+  animation: float-drift 6s ease-in-out infinite;
+}
+
+@keyframes heart-pulse {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.06); }
+  28% { transform: scale(1); }
+  40% { transform: scale(1.04); }
+  54% { transform: scale(1); }
+}
+
+.animate-heart-pulse {
+  transform-origin: center;
+  animation: heart-pulse 1.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shake,
+  .animate-ecg-dash,
+  .animate-orbit-slow,
+  .animate-orbit-reverse,
+  .animate-float-drift,
+  .animate-heart-pulse {
+    animation: none !important;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
